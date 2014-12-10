@@ -1,0 +1,11 @@
+{
+	"development": {
+		"redis": {}
+	},
+	"staging": {
+		"redis": {}
+	},
+	"production": {
+		"redis": {}
+	}
+}

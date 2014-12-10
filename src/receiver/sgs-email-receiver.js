@@ -7,9 +7,9 @@ module.exports = (function () {
 		config = config || {};
 	};
 
-	SGSEmailSender.prototype.receive = function (data, callback) {
+	SGSEmailReceiver.prototype.receive = function (data, callback) {
 
 	};
 
 	return new SGSEmailReceiver();
-});
+})();

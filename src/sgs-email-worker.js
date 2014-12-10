@@ -14,22 +14,18 @@ module.exports = (function () {
 	SGSEmailWorker.prototype.init = function (config) {
 		config = config || {};
 
-		this.queue = new SGMessagingClient(config.redis);
+		this.q = SGMessagingClient;
 
 		this.receiver.init(config.receiver);
-		this.subscribe('email:receive', this.receiver.receive.bind(this.receiver), {
+		this.q.subscribe('email:receive', this.receiver.receive.bind(this.receiver), {
 			concurrency: 1
 		});
 
 		this.sender.init(config.sender);
-		this.subscribe('email:send', this.sender.send.bind(this.sender), {
+		this.q.subscribe('email:send', this.sender.send.bind(this.sender), {
 			concurrency: 10
 		});
 	};
 
-	SGSEmailWorker.prototype.subscribe = function (jobName, jobMethod, options) {
-		this.queue().subscribe(jobName, jobMethod, options)
-	};
-
 	return new SGSEmailWorker();
-});
+})();

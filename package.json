@@ -3,14 +3,16 @@
 	"private": true,
 	"version": "0.0.1",
 	"description": "Sagacify's email worker.",
-	"main": "src/sgs-email-worker.js",
+	"main": "server.js",
 	"scripts": {
-		"test": "grunt ci --verbose"
+		"start": "NODE_ENV=development node server.js",
+		"test": "NODE_ENV=development grunt test"
 	},
 	"dependencies": {
-		"sg-messaging-client": "git@github.com:Sagacify/sg-messaging-client.git",
+		"sg-messaging-client": "git+ssh://git@github.com:Sagacify/sg-messaging-client.git#qa_api",
 
-		"haraka": "~2.5.0"
+		"async": "~0.9.0",
+		"colog": "~1.0.4"
 	},
 	"devDependencies": {
 		"mocha": "^1.21.4",
