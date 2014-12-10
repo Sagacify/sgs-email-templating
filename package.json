@@ -1,0 +1,38 @@
+{
+	"name": "sgs-email-worker",
+	"private": true,
+	"version": "0.0.1",
+	"description": "Sagacify's email worker.",
+	"main": "src/sgs-email-worker.js",
+	"scripts": {
+		"test": "grunt ci --verbose"
+	},
+	"dependencies": {
+		"sg-messaging-client": "git@github.com:Sagacify/sg-messaging-client.git",
+
+		"haraka": "~2.5.0"
+	},
+	"devDependencies": {
+		"mocha": "^1.21.4",
+		"grunt-cli": "^0.1.13",
+		"load-grunt-tasks": "^0.6.0",
+		"grunt-contrib-jshint": "^0.10.0",
+		"grunt-contrib-clean": "^0.6.0",
+		"grunt-mocha-test": "^0.11.0",
+		"grunt-istanbul": "^0.2.4",
+		"grunt-jsonlint": "^1.0.4",
+		"grunt-jscs": "^0.6.1"
+	},
+	"peerDependencies": {
+		"grunt": "^0.4.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Sagacify/sgs-email-worker"
+	},
+	"author": "Mickael van der Beek (https://github.com/Mickael-van-der-Beek)",
+	"bugs": {
+		"url": "https://github.com/Sagacify/sgs-email-worker/issues"
+	},
+	"homepage": "https://github.com/Sagacify/sgs-email-worker"
+}
