@@ -10,7 +10,7 @@ function Server (callback) {
 	var SGSEmailWorker = require('./sgs-email-worker');
 
 	var MessagingClientConfig = require('./config/messaging-client')[NODE_ENV];
-	var SGMessagingClient = require('sg-messaging-client');
+	var SGMessagingClient = require('sgs-messaging-client');
 
 	global.Config = {};
 

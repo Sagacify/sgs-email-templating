@@ -1,7 +1,7 @@
 var SGSEmailReceiver = require('./receiver/sgs-email-receiver');
 var SGSEmailSender = require('./sender/sgs-email-sender');
 
-var SGMessagingClient = require('sg-messaging-client');
+var SGMessagingClient = require('sgs-messaging-client');
 
 module.exports = (function () {
 	'use strict';

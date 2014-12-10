@@ -9,7 +9,7 @@
 		"test": "NODE_ENV=development grunt test"
 	},
 	"dependencies": {
-		"sg-messaging-client": "git+ssh://git@github.com:Sagacify/sg-messaging-client.git#qa_api",
+		"sgs-messaging-client": "git+ssh://git@github.com:Sagacify/sg-messaging-client.git#qa_api",
 
 		"async": "~0.9.0",
 		"colog": "~1.0.4"
