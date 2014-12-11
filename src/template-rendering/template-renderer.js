@@ -194,6 +194,8 @@ module.exports = (function () {
 
 					embeddedAttachmentCids[attachmentCid] = true;
 				}
+
+				return embeddedAttachments;
 			}, [])
 			.bind(this);
 
