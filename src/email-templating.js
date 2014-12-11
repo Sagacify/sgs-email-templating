@@ -1,6 +1,7 @@
 var TemplateRenderer = require('./template-rendering/template-renderer');
 
 var async = require('async');
+var _ = require('underscore');
 
 module.exports = (function () {
 	'use strict';
@@ -24,10 +25,16 @@ module.exports = (function () {
 			function (renderedEnvelope, cb) {
 				TemplateRenderer.renderShims(renderedEnvelope, cb);
 			},
-			function (cb) {
-				TemplateRenderer.getAttachmentList();
+			function (renderedEnvelope, cb) {
+				TemplateRenderer.getAttachmentList(renderedEnvelope, envelope.attachments, cb);
 			},
-		])
+		], function (e, renderedEnvelope) {
+			if (e) {
+				return callback(e);
+			}
+
+			return callback(null, _.extend(renderedEnvelope, envelope.fields));
+		});
 	};
 
 	return new EmailTemplating();

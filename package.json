@@ -1,7 +1,7 @@
 {
 	"name": "sgs-email-templating",
 	"private": true,
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Sagacify's email templating library.",
 	"main": "./index.js",
 	"scripts": {
