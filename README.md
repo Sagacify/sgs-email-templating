@@ -1,4 +1,4 @@
-SGS Email Worker
-=================
+SGS Email Templating
+=======================
 
-Sagacify's email worker.
+Sagacify's email templating library.

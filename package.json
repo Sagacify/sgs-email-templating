@@ -1,40 +1,39 @@
 {
-	"name": "sgs-email-worker",
+	"name": "sgs-email-templating",
 	"private": true,
 	"version": "0.0.1",
-	"description": "Sagacify's email worker.",
-	"main": "server.js",
+	"description": "Sagacify's email templating library.",
+	"main": "./index.js",
 	"scripts": {
-		"start": "NODE_ENV=development node server.js",
 		"test": "NODE_ENV=development grunt test"
 	},
 	"dependencies": {
-		"sgs-messaging-client": "git+ssh://git@github.com:Sagacify/sg-messaging-client.git#qa_api",
+		"handlebars": "~2.0.0",
+		"html-to-text": "~1.0.0",
 
-		"async": "~0.9.0",
-		"colog": "~1.0.4"
+		"underscore": "~1.7.0",
+		"async": "~0.9.0"
 	},
 	"devDependencies": {
-		"mocha": "^1.21.4",
-		"grunt-cli": "^0.1.13",
-		"load-grunt-tasks": "^0.6.0",
-		"grunt-contrib-jshint": "^0.10.0",
-		"grunt-contrib-clean": "^0.6.0",
-		"grunt-mocha-test": "^0.11.0",
-		"grunt-istanbul": "^0.2.4",
-		"grunt-jsonlint": "^1.0.4",
-		"grunt-jscs": "^0.6.1"
+		"grunt-cli": "~0.1.13",
+		"load-grunt-tasks": "~0.6.0",
+		"grunt-contrib-jshint": "~0.10.0",
+		"grunt-contrib-clean": "~0.6.0",
+		"grunt-mocha-test": "~0.11.0",
+		"grunt-istanbul": "~0.2.4",
+		"grunt-jsonlint": "~1.0.4",
+		"grunt-jscs": "~0.6.1"
 	},
 	"peerDependencies": {
-		"grunt": "^0.4.5"
+		"grunt": "~0.4.5"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Sagacify/sgs-email-worker"
+		"url": "https://github.com/Sagacify/sgs-email-templating"
 	},
 	"author": "Mickael van der Beek (https://github.com/Mickael-van-der-Beek)",
 	"bugs": {
-		"url": "https://github.com/Sagacify/sgs-email-worker/issues"
+		"url": "https://github.com/Sagacify/sgs-email-templating/issues"
 	},
-	"homepage": "https://github.com/Sagacify/sgs-email-worker"
+	"homepage": "https://github.com/Sagacify/sgs-email-templating"
 }
