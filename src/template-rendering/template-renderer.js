@@ -197,7 +197,10 @@ module.exports = (function () {
 			}, [])
 			.bind(this);
 
-		renderedEnvelope.attachments = renderedEnvelope.attachments.concat(embeddedAttachments);		
+		renderedEnvelope.attachments = [].concat(
+			renderedEnvelope.attachments || [],
+			embeddedAttachments
+		);		
 
 		return callback(null, renderedEnvelope);
 	};
