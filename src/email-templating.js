@@ -14,16 +14,19 @@ module.exports = (function () {
 	};
 
 	EmailTemplating.prototype.renderEnvelope = function (envelope, data, callback) {
-		async.parallel([
+		async.waterfall([
 			function (cb) {
-				TemplateRenderer.addTemplates(envelope.templates);
+				TemplateRenderer.addTemplates(envelope.templates, cb);
 			},
 			function (cb) {
 				TemplateRenderer.renderTemplates(envelope.templates, envelope.inlined, data, cb);
 			},
-			// function (cb) {
-			// 	TemplateRenderer.renderTemplates(templates);
-			// },
+			function (renderedEnvelope, cb) {
+				TemplateRenderer.renderShims(renderedEnvelope, cb);
+			},
+			function (cb) {
+				TemplateRenderer.getAttachmentList();
+			},
 		])
 	};
 

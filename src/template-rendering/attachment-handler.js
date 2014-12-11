@@ -5,5 +5,13 @@ module.exports = (function () {
 
 	function AttachmentHandler () {}
 
+	AttachmentHandler.prototype.getCids = function (str) {
+		return str.match(/(ref|link|href)=\"cid\:([^\"]+)\"/gi);
+	};
+
+	AttachmentHandler.prototype.getCids = function (str) {
+		return str.match(/(ref|link|href)=\"cid\:([^\"]+)\"/gi);
+	};
+
 	return new AttachmentHandler();
 })();

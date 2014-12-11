@@ -38,6 +38,11 @@ module.exports = (function () {
 	};
 
 	TemplateRenderer.prototype.addTemplates = function (templates, options, callback) {
+		if (arguments.length === 2) {
+			callback = options;
+			options = {};
+		}
+
 		var templateList = this.getTemplateList(templates);
 
 		async.each(
@@ -50,11 +55,6 @@ module.exports = (function () {
 	};
 
 	TemplateRenderer.prototype.addTemplate = function (templatePath, options, callback) {
-		if (arguments.length === 2) {
-			callback = options;
-			options = {};
-		}
-
 		if (fsUtils.isAbsolute(templatePath) !== true) {
 			templatePath = fsUtils.toAbsolute(templatePath);
 		}
@@ -101,6 +101,10 @@ module.exports = (function () {
 				return callback(null, _.object(this.templateKeys, renderedTemplates));
 			}.bind(this)
 		);
+	};
+
+	TemplateRenderer.prototype.renderShims = function (renderedEnvelope) {
+		
 	};
 
 	return new TemplateRenderer();
