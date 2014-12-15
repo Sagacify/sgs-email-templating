@@ -39,6 +39,16 @@ module.exports = (function () {
 		if (Array.isArray(config.templateKeys)) {
 			this.templateKeys = _.union(this.templateKeys, config.templateKeys);
 		}
+
+		if ('helpers' in config) {
+			Object.keys(config.helpers).forEach(function (name) {
+				this.addHelper(name, config.helpers[name]);
+			}.bind(this));
+		}
+	};
+
+	TemplateRenderer.prototype.addHelper = function (name, helper) {
+		handlebars.registerHelper(name, helper);
 	};
 
 	TemplateRenderer.prototype.getTemplateList = function (templates) {
