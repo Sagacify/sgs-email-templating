@@ -99,7 +99,7 @@ module.exports = (function () {
 		}.bind(this));
 	};
 
-	TemplateRenderer.prototype.renderTemplate = function (templates, inlined, data, callback) {
+	TemplateRenderer.prototype.renderTemplates = function (templates, inlined, data, callback) {
 		templates = templates || {};
 		inlined = inlined || {};
 
