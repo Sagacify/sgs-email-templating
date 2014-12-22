@@ -55,7 +55,7 @@ module.exports = (function () {
 		return this.templateKeys
 			.reduce(function (templateList, templateKey) {
 				if (typeof templates[templateKey] === 'string') {
-					templateList.push(templateKey);
+					templateList.push(templates[templateKey]);
 				}
 
 				return templateList;
