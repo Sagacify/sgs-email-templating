@@ -28,13 +28,17 @@ module.exports = (function () {
 			'text'
 		];
 
-		this.staticsPath = null;
+		this.staticsPath = '';
 
 		this.matchCidRegExp = /\"cid\:([^\"]+)\"/gi;
 	}
 
 	TemplateRenderer.prototype.init = function (config) {
 		config = config || {};
+
+		if (typeof config.staticsPath === 'string') {
+			this.staticsPath = config.staticsPath;
+		}
 
 		if (Array.isArray(config.templateKeys)) {
 			this.templateKeys = _.union(this.templateKeys, config.templateKeys);
@@ -146,14 +150,19 @@ module.exports = (function () {
 	};
 
 	TemplateRenderer.prototype.applyShim = function (renderedEnvelope, unsetTemplateKey, shimKey) {
-		var shimData = this.renderedEnvelope[shimKey];
+		var shimData = renderedEnvelope[shimKey];
 		var shimMethod = this.templateShims[unsetTemplateKey][shimKey].method;
 		var shimContext = this.templateShims[unsetTemplateKey][shimKey].context;
-		var shimTemplate = shimMethod.apply(shimContext, shimData);
 
-		this.renderedEnvelope[unsetTemplateKey] = shimMethod.apply(shimContext, shimData);
+		if (!Array.isArray(shimData)) {
+			shimData = [shimData];
+		}
 
-		return this.renderedEnvelope[unsetTemplateKey];
+		var shimTemplate = shimContext[shimMethod].apply(shimContext, shimData);
+
+		renderedEnvelope[unsetTemplateKey] = shimTemplate;
+
+		return renderedEnvelope[unsetTemplateKey];
 	};
 
 	TemplateRenderer.prototype.renderShims = function (renderedEnvelope, callback) {
@@ -162,7 +171,7 @@ module.exports = (function () {
 
 		for (var i = 0, len = this.templateKeys.length; i < len; i++) {
 			shimKey = null;
-			templateKey = templateKeys[i];
+			templateKey = this.templateKeys[i];
 
 			if (renderedEnvelope[templateKey] == null) {
 				shimKey = this.getShim(renderedEnvelope, this.templateKeys, templateKey);
@@ -175,7 +184,7 @@ module.exports = (function () {
 		return callback(null, renderedEnvelope);
 	};
 
-	TemplateRenderer.prototype.getAttachmentList = function (renderedEnvelope, callback) {
+	TemplateRenderer.prototype.getAttachmentList = function (renderedEnvelope, attachments, callback) {
 		var concatenatedTemplates = this.templateKeys
 			.map(function (templateKey) {
 				var templateValue = ''
@@ -210,7 +219,7 @@ module.exports = (function () {
 			.bind(this);
 
 		renderedEnvelope.attachments = [].concat(
-			renderedEnvelope.attachments || [],
+			attachments || [],
 			embeddedAttachments
 		);		
 
