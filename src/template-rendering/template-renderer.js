@@ -215,8 +215,7 @@ module.exports = (function () {
 				}
 
 				return embeddedAttachments;
-			}, [])
-			.bind(this);
+			}.bind(this), []);
 
 		renderedEnvelope.attachments = [].concat(
 			attachments || [],
