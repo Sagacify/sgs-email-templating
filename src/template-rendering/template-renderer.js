@@ -207,8 +207,8 @@ module.exports = (function () {
 				if (!(attachmentCid in embeddedAttachmentCids)) {
 					embeddedAttachments.push({
 						cid: filename,
-						fileName: filename,
-						filePath: path.join(filename, this.staticsPath)
+						filename: filename,
+						path: path.resolve(this.staticsPath, filename)
 					});
 
 					embeddedAttachmentCids[attachmentCid] = true;
