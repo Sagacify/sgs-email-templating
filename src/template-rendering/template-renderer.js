@@ -30,6 +30,8 @@ module.exports = (function () {
 
 		this.staticsPath = '';
 
+		this.useShims = false;
+
 		this.matchCidRegExp = /\"cid\:([^\"]+)\"/gi;
 	}
 
@@ -48,6 +50,10 @@ module.exports = (function () {
 			Object.keys(config.helpers).forEach(function (name) {
 				this.addHelper(name, config.helpers[name]);
 			}.bind(this));
+		}
+
+		if ('useShims' in config) {
+			this.useShims = config.useShims;
 		}
 	};
 
@@ -166,6 +172,10 @@ module.exports = (function () {
 	};
 
 	TemplateRenderer.prototype.renderShims = function (renderedEnvelope, callback) {
+		if (this.useShims !== true) {
+			return callback(null);
+		}
+
 		var templateKey;
 		var shimKey;
 
