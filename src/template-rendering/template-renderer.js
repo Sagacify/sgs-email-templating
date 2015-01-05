@@ -173,7 +173,7 @@ module.exports = (function () {
 
 	TemplateRenderer.prototype.renderShims = function (renderedEnvelope, callback) {
 		if (this.useShims !== true) {
-			return callback(null);
+			return callback(null, renderedEnvelope);
 		}
 
 		var templateKey;
